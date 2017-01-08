@@ -82,7 +82,7 @@ function MqttSwitchAccessory(log, config) {
 	this.client.on('message', function (topic, message) {
 		if (topic == that.topicStatusGet) {
 			var status = message.toString();
-			that.switchStatus = (status == that.onValue) ? true : false;
+			that.switchStatus = (status == that.onValue) ? ON : OFF;
 		   	that.service.getCharacteristic(Characteristic.On).setValue(that.switchStatus, undefined, 'fromSetValue');
 		}
 	});
